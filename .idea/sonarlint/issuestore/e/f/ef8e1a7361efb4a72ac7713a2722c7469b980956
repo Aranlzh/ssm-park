@@ -1,0 +1,6 @@
+
+Xsquid:S1126;"AReplace this if-then-else statement by a single return statement.(Ã¼Œ
+Xsquid:S1126E"AReplace this if-then-else statement by a single return statement.(Ã¼Œ
+Xsquid:S1126P"AReplace this if-then-else statement by a single return statement.(Ã¼Œ
+xsquid:S1488"\Immediately return this expression instead of assigning it to the temporary variable "list".(‰ Åøÿÿÿÿ
+xsquid:S1488&"\Immediately return this expression instead of assigning it to the temporary variable "list".(‰ Åøÿÿÿÿ

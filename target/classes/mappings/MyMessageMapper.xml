@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ssm.mapper.MyMessageMapper" >
+	<resultMap id="BaseResultMap" type="ssm.entity.Message" >
+	    <id column="id" property="id" jdbcType="INTEGER" />
+	    <result column="content" property="content" jdbcType="VARCHAR" />
+	    <result column="user_id" property="userId" jdbcType="INTEGER" />
+	    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+	    <result column="createDate" property="createdate" jdbcType="DATE" />
+	    <result column="admin_id" property="adminId" jdbcType="INTEGER" />
+	    <result column="admin_name" property="adminName" jdbcType="VARCHAR" />
+	    <result column="answer" property="answer" jdbcType="VARCHAR" />
+	    <result column="answerDate" property="answerdate" jdbcType="DATE" />
+	  </resultMap>
+	<sql id="message_like_where">
+		<if test="message!=null">
+			<if test="message.content!=null and message.content!=''">
+				and content LIKE '%${message.content}%'
+			</if>
+		</if>
+	</sql>
+	<select id="findMessagesLikeWhat" resultMap="BaseResultMap" parameterType="ssm.entity.MessageQueryVo">
+		SELECT * FROM message
+		<where>
+			<include refid="message_like_where"></include>
+		</where>
+	</select>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ssm.mapper.MyAdminMapper" >
+	
+	<sql id="admin_like_where">
+		<if test="admin!=null">
+			<if test="admin.name!=null and admin.name!=''">
+				and admin.name LIKE '%${admin.name}%'
+			</if>
+		</if>
+	</sql>
+	<select id="findAdminsLikeWhat" resultType="Admin" parameterType="ssm.entity.AdminQueryVo">
+		SELECT * FROM admin
+		<where>
+			<include refid="admin_like_where"></include>
+		</where>
+	</select>
+</mapper>

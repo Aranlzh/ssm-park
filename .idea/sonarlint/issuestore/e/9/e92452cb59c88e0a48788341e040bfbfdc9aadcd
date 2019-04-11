@@ -1,0 +1,5 @@
+
+Wsquid:S11268"AReplace this if-then-else statement by a single return statement.(ü´Ù
+tsquid:S1488 "]Immediately return this expression instead of assigning it to the temporary variable "admin".(¥Û˜ì
+usquid:S1488'"^Immediately return this expression instead of assigning it to the temporary variable "admins".(ÄÚ®ª
+Isquid:S1135C"2Complete the task associated to this TODO comment.(‡ñÅ¼

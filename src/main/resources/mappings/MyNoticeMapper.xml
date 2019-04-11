@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ssm.mapper.MyNoticeMapper" >
+  	<resultMap id="BaseResultMap" type="ssm.entity.Notice" >
+	    <id column="id" property="id" jdbcType="INTEGER" />
+	    <result column="title" property="title" jdbcType="VARCHAR" />
+	    <result column="content" property="content" jdbcType="VARCHAR" />
+	    <result column="createDate" property="createdate" jdbcType="DATE" />
+	    <result column="admin_id" property="adminId" jdbcType="INTEGER" />
+	    <result column="admin_name" property="adminName" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="notice_like_where">
+		<if test="notice != null">
+			<if test="notice.title != null and notice.title != ''">
+				and title LIKE '%${notice.title}%'
+			</if>
+			<if test="notice.content != null and notice.content != ''">
+				and content LIKE '%${notice.content}%'
+			</if>
+			<if test="notice.createdate != null and notice.createdate != ''">
+				and createdate LIKE '%${notice.createdate}%'
+			</if>
+			<if test="notice.adminName != null and notice.adminName != ''">
+				and adminName LIKE '%${notice.adminName}%'
+			</if>
+		</if>
+	</sql>
+	<select id="findNoticeLikeWhat" resultMap="BaseResultMap" parameterType="ssm.entity.NoticeQueryVo">
+		SELECT * FROM notice
+		<where>
+			<include refid="notice_like_where"></include>
+		</where>
+	</select>
+</mapper>

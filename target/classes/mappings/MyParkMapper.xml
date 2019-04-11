@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ssm.mapper.MyParkMapper" >
+	  <resultMap id="BaseResultMap" type="ssm.entity.Park" >
+	    <id column="id" property="id" jdbcType="INTEGER" />
+	    <result column="name" property="name" jdbcType="VARCHAR" />
+	    <result column="price" property="price" jdbcType="DOUBLE" />
+	    <result column="status" property="status" jdbcType="INTEGER" />
+ 	 </resultMap>
+	<sql id="park_like_where">
+		<if test="park!=null">
+			<if test="park.name!=null and park.name!=''">
+				and park.name LIKE '%${park.name}%'
+			</if>
+		</if>
+	</sql>
+	<select id="findParksLikeWhat" resultType="Park" parameterType="ssm.entity.ParkQueryVo">
+		SELECT * FROM park
+		<where>
+			<include refid="park_like_where"></include>
+		</where>
+	</select>
+</mapper>
